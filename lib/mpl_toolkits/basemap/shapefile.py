@@ -50,7 +50,10 @@ def u(v):
     if PYTHON3:
         if isinstance(v, bytes):
             # For python 3 decode bytes to str.
-            return v.decode('utf-8')
+            try:
+                return v.decode('utf-8')
+            except:
+                return v.decode('latin-1')
         elif isinstance(v, str):
             # Already str.
             return v
